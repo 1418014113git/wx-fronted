@@ -68,16 +68,16 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   ]
 })
 
-module.exports = new Promise((resolve, reject) = > {
-  portfinder.basePort = process.env.PORT || config.dev.port
-portfinder.getPort((err, port) = > {
+module.exports = new Promise((resolve, reject) => {
+  portfinder.basePort = process.env.PORT || config.dev.port,
+portfinder.getPort((err, port) => {
   if(err) {
     reject(err)
   } else {
     // publish the new Port, necessary for e2e tests
-    process.env.PORT = port
+    process.env.PORT = port,
   // add port to devServer config
-  devWebpackConfig.devServer.port = port
+  devWebpackConfig.devServer.port = port,
 
 // Add FriendlyErrorsPlugin
 devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
@@ -87,7 +87,7 @@ devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
   onErrors: config.dev.notifyOnErrors
     ? utils.createNotifierCallback()
     : undefined
-}))
+})),
 
 resolve(devWebpackConfig)
 }
